@@ -1,5 +1,15 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import "@/assets/tailwind.css"
+import router from "@/components/router/router";
+import components from '@/components/UI'
 
-createApp(App).mount('#app')
+const app = createApp(App);
+
+components.forEach(component => {
+    app.component(component.name, component)
+})
+
+app
+    .use(router)
+    .mount('#app')
