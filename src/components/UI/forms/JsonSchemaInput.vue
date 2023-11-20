@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-3xl">Json Schema</h2>
+    <h2 class="text-3xl">Json schema</h2>
     <div class="mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
       <div class="flex items-center justify-between px-3 py-2 border-b dark:border-gray-600">
         <div
@@ -28,13 +28,7 @@
         </div>
       </div>
       <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
-        <label for="editor" class="sr-only">Publish post</label>
-        <div class="line-numbers">
-          <span></span>
-        </div>
-        <textarea id="editor" rows="8"
-                  class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-                  placeholder="Write an article..." required></textarea>
+       <lined-text-area :input-text="inputText"/>
       </div>
     </div>
   </div>
@@ -42,33 +36,42 @@
 
 <script>
 
+import LinedTextArea from "@/components/UI/buttons/LinedTextArea.vue";
+
 export default {
+  components: {LinedTextArea},
   data() {
     return {
-      lineCount: 0,
+     inputText: "{\n" +
+         "   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n" +
+         "   \"title\": \"Product\",\n" +
+         "   \"description\": \"A product from Acme's catalog\",\n" +
+         "   \"type\": \"object\",\n" +
+         "\t\n" +
+         "   \"properties\": {\n" +
+         "\t\n" +
+         "      \"id\": {\n" +
+         "         \"description\": \"The unique identifier for a product\",\n" +
+         "         \"type\": \"integer\"\n" +
+         "      },\n" +
+         "\t\t\n" +
+         "      \"name\": {\n" +
+         "         \"description\": \"Name of the product\",\n" +
+         "         \"type\": \"string\"\n" +
+         "      },\n" +
+         "\t\t\n" +
+         "      \"price\": {\n" +
+         "         \"type\": \"number\",\n" +
+         "         \"minimum\": 0,\n" +
+         "         \"exclusiveMinimum\": true\n" +
+         "      }\n" +
+         "   },\n" +
+         "\t\n" +
+         "   \"required\": [\"id\", \"name\", \"price\"]\n" +
+         "}"
     }
   },
-  watch:  {
-    lineCount(newLineCount) {
 
-    }
-  },
-  methods: {
-    addNumber() {
-      const textarea = document.querySelector('textarea')
-      const lineNumbers = document.querySelector('.line-numbers')
-      console.log(textarea);
-      console.log(lineNumbers)
-
-      textarea.addEventListener('keyup', event => {
-        const numberOfLines = event.target.value.split('\n').length
-
-        lineNumbers.innerHTML = Array(numberOfLines)
-            .fill('<span></span>')
-            .join('')
-      })
-    }
-  }
 }
 </script>
 
