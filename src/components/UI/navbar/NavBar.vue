@@ -13,7 +13,7 @@
         </div>
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
-            <img class="h-8 w-auto" src="../../assets/logo.png" alt="Your Company" />
+            <img class="h-8 w-auto" src="../../../assets/logo.png" alt="Your Company" />
           </div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
@@ -72,9 +72,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-
+  { name: 'Json editor', href: '/', current: true },
+  { name: 'Json schema editor', href: '/schema', current: false },
 ]
 
 const isAuth = false;

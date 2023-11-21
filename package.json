@@ -2,6 +2,7 @@
   "name": "json-tool",
   "version": "0.1.0",
   "private": true,
+  "loader": "",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
@@ -11,8 +12,10 @@
     "@heroicons/vue": "^2.0.18",
     "@tailwindcss/forms": "^0.5.7",
     "core-js": "^3.8.3",
+    "vanilla-jsoneditor": "^0.19.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
+    "vue3-ts-jsoneditor": "^2.9.0",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
