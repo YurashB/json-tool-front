@@ -73,7 +73,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 const navigation = [
   { name: 'Json editor', href: '/', current: true },
-  { name: 'Json schema editor', href: '/schema', current: false },
+  { name: 'Json schema editor', href: '/schema', current: true },
 ]
 
 const isAuth = false;

@@ -7,19 +7,17 @@
             class="flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse dark:divide-gray-600">
           <div class="flex items-center space-x-1 rtl:space-x-reverse sm:pe-4">
             <json-to-flat-view
-                @convert="convertToFlat"
-                :json="json"
-                :disabled="buttonDisabled"
+                :disabled="true"
             />
           </div>
         </div>
       </div>
       <div class="bg-white dark:bg-gray-800">
         <json-editor
-            v-model="json"
+            :value="json"
             class="json-editor"
             mode="text"
-            :validator="validator"
+            :readOnly="true"
         />
       </div>
     </div>
@@ -32,23 +30,9 @@ import TextComponent from "@/components/UI/textareas/TextComponent.vue";
 
 export default {
   components: {TextComponent, JsonToFlatView},
-  data() {
-    return {
-      json: "",
-      convertedData: "",
-      isJsonValid: false,
-    }
-  },
   props: {
-    buttonDisabled: false,
-    title: '',
-    validator: ""
-  },
-  methods: {
-    convertToFlat(flattenJson) {
-      this.convertedData = flattenJson
-      this.$emit('convert', flattenJson)
-    }
+    json: "",
+    title: ""
   },
 }
 </script>

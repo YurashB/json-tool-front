@@ -7,14 +7,21 @@
         @load="schemaLoad"
     />
     <div class="columns-1 sm:columns-2" v-if="validator !== null">
-      <json-editor
+      <json-editor-comp
+          title="Json input:"
+          @convert="convert"
           :validator="validator"
-          mode="text"
       />
-      <json-editor
-          mode="text"
+      <read-only-json-editor
+          title="Json schema:"
           :json="schema"
-          :readOnly="true"
+      />
+    </div>
+    <div class="columns-1">
+      <text-component
+          v-if="convertedData"
+          title="Converted data"
+          :content="convertedData"
       />
     </div>
   </div>
@@ -25,13 +32,17 @@ import {defineComponent} from "vue";
 import JsonToFlatView from "@/components/UI/buttons/JsonToFlatView.vue";
 import SchemaFileLoader from "@/components/UI/buttons/SchemaFileLoader.vue";
 import {createAjvValidator} from "vanilla-jsoneditor";
+import JsonEditorComp from "@/components/UI/editors/JsonEditorComp.vue";
+import TextComponent from "@/components/UI/textareas/TextComponent.vue";
+import ReadOnlyJsonEditor from "@/components/UI/editors/ReadOnlyJsonEditor.vue";
 
 export default defineComponent({
-  components: {JsonToFlatView, SchemaFileLoader},
+  components: {ReadOnlyJsonEditor, TextComponent, JsonEditorComp, JsonToFlatView, SchemaFileLoader},
   data() {
     return {
       validator: null,
-      schema: ""
+      schema: "",
+      convertedData: ""
     }
   },
   methods: {
@@ -42,6 +53,9 @@ export default defineComponent({
       } catch (e) {
         alert("Invalid json schema uploaded")
       }
+    },
+    convert(data) {
+      this.convertedData = data;
     }
   }
 })
