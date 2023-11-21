@@ -25,11 +25,11 @@
 </template>
 
 <script>
-import JsonToFlatView from "@/components/UI/buttons/JsonToFlatView.vue";
 import TextComponent from "@/components/UI/textareas/TextComponent.vue";
+import JsonToFlatView from "@/components/UI/buttons/JsonToFlatView.vue";
 
 export default {
-  components: {TextComponent, JsonToFlatView},
+  components: {JsonToFlatView, TextComponent},
   props: {
     json: "",
     title: ""

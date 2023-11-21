@@ -29,15 +29,14 @@
 
 <script>
 import {defineComponent} from "vue";
-import JsonToFlatView from "@/components/UI/buttons/JsonToFlatView.vue";
-import SchemaFileLoader from "@/components/UI/buttons/SchemaFileLoader.vue";
 import {createAjvValidator} from "vanilla-jsoneditor";
 import JsonEditorComp from "@/components/UI/editors/JsonEditorComp.vue";
 import TextComponent from "@/components/UI/textareas/TextComponent.vue";
 import ReadOnlyJsonEditor from "@/components/UI/editors/ReadOnlyJsonEditor.vue";
+import SchemaFileLoader from "@/components/UI/buttons/SchemaFileLoader.vue";
 
 export default defineComponent({
-  components: {ReadOnlyJsonEditor, TextComponent, JsonEditorComp, JsonToFlatView, SchemaFileLoader},
+  components: { ReadOnlyJsonEditor, TextComponent, JsonEditorComp, SchemaFileLoader},
   data() {
     return {
       validator: null,

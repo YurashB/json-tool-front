@@ -48,7 +48,7 @@
                       <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Log in</a>
                     </MenuItem>
                     <MenuItem v-slot="{ active }">
-                      <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign in</a>
+                      <a href="/sign-in" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign in</a>
                     </MenuItem>
                 </div>
               </MenuItems>
@@ -74,6 +74,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 const navigation = [
   { name: 'Json editor', href: '/', current: true },
   { name: 'Json schema editor', href: '/schema', current: true },
+  { name: 'Schema to md', href: '/schema/converter/markdown', current: true}
 ]
 
 const isAuth = false;

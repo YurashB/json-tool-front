@@ -6,6 +6,7 @@
           title="Json input:"
           @convert="convert"
       />
+    <save-button />
     <text-component
         v-if="convertedData"
         title="Converted data"
@@ -18,9 +19,10 @@
 import {defineComponent} from "vue";
 import JsonEditorComp from "@/components/UI/editors/JsonEditorComp.vue";
 import TextComponent from "@/components/UI/textareas/TextComponent.vue";
+import SaveButton from "@/components/UI/buttons/SaveButton.vue";
 
 export default defineComponent({
-  components: {TextComponent, JsonEditorComp},
+  components: {SaveButton, TextComponent, JsonEditorComp},
   data() {
     return {
       convertedData: ""
