@@ -4,6 +4,7 @@ import "@/assets/tailwind.css"
 import router from "@/components/router/router";
 import components from '@/components/UI'
 import vue3TsJsoneditor from 'vue3-ts-jsoneditor';
+import  "./components/inetrceptors/axios"
 
 const app = createApp(App);
 

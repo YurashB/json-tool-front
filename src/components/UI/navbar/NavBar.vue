@@ -37,18 +37,18 @@
               <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div v-if="isAuth">
                   <MenuItem v-slot="{ active }">
-                    <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Snapshots</a>
+                    <a href="/snapshots" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Snapshots</a>
                   </MenuItem>
                   <MenuItem v-slot="{ active }">
-                    <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign out</a>
+                    <a href="/logout" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign out</a>
                   </MenuItem>
                 </div>
                 <div v-else>
                     <MenuItem v-slot="{ active }">
-                      <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Log in</a>
+                      <a href="/login" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Log in</a>
                     </MenuItem>
                     <MenuItem v-slot="{ active }">
-                      <a href="/sign-in" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign in</a>
+                      <a href="/signup" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign in</a>
                     </MenuItem>
                 </div>
               </MenuItems>
@@ -77,15 +77,15 @@ const navigation = [
   { name: 'Schema to md', href: '/schema/converter/markdown', current: true}
 ]
 
-const isAuth = false;
-
 </script>
 
 <script>
 export default {
   name: 'nav-bar',
-  props: {
-    isAuth: true
+  data() {
+    return {
+      isAuth: false
+    }
   }
 }
 </script>
