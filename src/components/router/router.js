@@ -10,7 +10,9 @@ import Test from "@/components/Test.vue";
 const routes = [
     {
         path: '/',
-        component: Main
+        name: "main",
+        component: Main,
+        props: true
     },
     {
         path: '/schema',

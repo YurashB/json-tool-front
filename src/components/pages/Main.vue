@@ -6,7 +6,6 @@
           title="Json input:"
           @convert="convert"
       />
-    <save-button />
     <text-component
         v-if="convertedData"
         title="Converted data"
@@ -25,7 +24,9 @@ export default defineComponent({
   components: {SaveButton, TextComponent, JsonEditorComp},
   data() {
     return {
-      convertedData: ""
+      convertedData: "",
+      title: "",
+      json: ""
     }
   },
   methods: {

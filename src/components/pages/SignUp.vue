@@ -2,8 +2,7 @@
   <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       <img class="mx-auto h-12 w-auto" src="../../assets/logo.png" alt="Your Company"/>
-      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your
-        account</h2>
+      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign up</h2>
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -78,7 +77,7 @@ export default {
       if (!this.isEmailValid() || !this.isPasswordValid()) {
         return false;
       } else {
-        let url = '/register';
+        let url = 'auth/register';
         let data = {
           email: this.email,
           password: this.password

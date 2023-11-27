@@ -5,6 +5,7 @@ import router from "@/components/router/router";
 import components from '@/components/UI'
 import vue3TsJsoneditor from 'vue3-ts-jsoneditor';
 import  "./components/inetrceptors/axios"
+import VueCookies from 'vue-cookies';
 
 const app = createApp(App);
 
@@ -14,6 +15,7 @@ components.forEach(component => {
 
 app
     .use(router)
+    .use(VueCookies)
     .use(vue3TsJsoneditor, {
             componentName: 'jsonEditor',
             options: {

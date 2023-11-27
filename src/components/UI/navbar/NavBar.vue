@@ -44,12 +44,12 @@
                   </MenuItem>
                 </div>
                 <div v-else>
-                    <MenuItem v-slot="{ active }">
-                      <a href="/login" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Log in</a>
-                    </MenuItem>
-                    <MenuItem v-slot="{ active }">
-                      <a href="/signup" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign in</a>
-                    </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a href="/login" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Log in</a>
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a href="/signup" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign up</a>
+                  </MenuItem>
                 </div>
               </MenuItems>
             </transition>
@@ -69,6 +69,7 @@
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
+import app from "@/App.vue";
 
 
 const navigation = [
@@ -80,12 +81,12 @@ const navigation = [
 </script>
 
 <script>
+import app from "@/App.vue";
+
 export default {
   name: 'nav-bar',
-  data() {
-    return {
-      isAuth: false
-    }
+  props: {
+    isAuth: Boolean
   }
 }
 </script>

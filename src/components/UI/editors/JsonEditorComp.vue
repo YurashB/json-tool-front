@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-3xl mb-2">{{title}}</h2>
+    <h2 class="text-3xl mb-2">{{ title }}</h2>
     <div class="mb-4 border border-gray-200 rounded-t-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
       <div class="flex items-center justify-between px-3 py-2 border-b dark:border-gray-600">
         <div
@@ -10,6 +10,10 @@
                 @convert="convertToFlat"
                 :json="json"
                 :disabled="buttonDisabled"
+            />
+            <save-button
+                @save="save"
+                :content="json"
             />
           </div>
         </div>
@@ -29,12 +33,13 @@
 <script>
 import TextComponent from "@/components/UI/textareas/TextComponent.vue";
 import JsonToFlatView from "@/components/UI/buttons/JsonToFlatView.vue";
+import SaveButton from "@/components/UI/buttons/SaveButton.vue";
 
 export default {
-  components: {JsonToFlatView, TextComponent},
+  components: {SaveButton, JsonToFlatView, TextComponent},
   data() {
     return {
-      json: "",
+      json: this.jsonProp,
       convertedData: "",
       isJsonValid: false,
     }
@@ -42,7 +47,8 @@ export default {
   props: {
     buttonDisabled: false,
     title: '',
-    validator: ""
+    validator: "",
+    jsonProp: ""
   },
   methods: {
     convertToFlat(flattenJson) {

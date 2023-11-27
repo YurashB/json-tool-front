@@ -79,7 +79,7 @@ export default {
       if (!this.isEmailValid() || !this.isPasswordValid()) {
         return false;
       } else {
-        let url = '/login';
+        let url = 'auth/login';
         let data = {
           email: this.email,
           password: this.password
@@ -93,8 +93,7 @@ export default {
         }
         axios.post(url, data, config)
             .then((response) => {
-              console.log(response)
-              router.push("/test")
+              router.push("/snapshots")
             })
             .catch(() => alert("Ups, something went wrong"));
       }
@@ -134,5 +133,3 @@ export default {
 }
 
 </script>
-
-\\

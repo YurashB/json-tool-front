@@ -24,7 +24,6 @@ export default {
       try {
         const json = JSON.parse(this.json);
 
-        console.log(json)
         const flattenJSON = (obj = {}, res = {}, extraKey = '') => {
           for (let key in obj) {
             if (typeof obj[key] !== 'object') {

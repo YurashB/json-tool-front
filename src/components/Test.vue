@@ -14,10 +14,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("/user").then((data) => {
-      console.log(data)
-      this.user = data
-    })
+    console.log(document.cookie)
   }
 }
 </script>
