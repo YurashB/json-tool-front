@@ -40,7 +40,7 @@
                     <a href="/snapshots" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Snapshots</a>
                   </MenuItem>
                   <MenuItem v-slot="{ active }">
-                    <a href="/logout" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign out</a>
+                    <p @click="logout" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Log out</p>
                   </MenuItem>
                 </div>
                 <div v-else>
@@ -69,7 +69,6 @@
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
-import app from "@/App.vue";
 
 
 const navigation = [
@@ -81,12 +80,29 @@ const navigation = [
 </script>
 
 <script>
-import app from "@/App.vue";
+import axios from "axios";
+import router from "@/components/router/router";
 
 export default {
   name: 'nav-bar',
-  props: {
-    isAuth: Boolean
+  data() {
+    return {
+      isAuth: Boolean
+    }
+  },
+  mounted() {
+    axios.get("/auth/user").then(res => {
+      this.isAuth = res.status === 200;
+    })
+  },
+  methods: {
+    logout() {
+      axios.post("/auth/logout", {}, {withCredentials: true}).then(res => {
+        this.isAuth = false
+        router.push("/")
+        swal("Log out successfully!", "", "success")
+      })
+    }
   }
 }
 </script>

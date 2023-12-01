@@ -3,9 +3,9 @@ import router from "@/components/router/router";
 
 axios.defaults.baseURL = "http://localhost:8081/jsontool/"
 
-
 axios.interceptors.response.use(response => response, async error => {
     if (error.response.status === 401) {
+
         const response = await axios.post("auth/refresh", {}, {withCredentials: true})
 
         if (response.status === 200) {

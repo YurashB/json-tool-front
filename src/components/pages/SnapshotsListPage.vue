@@ -32,7 +32,7 @@
             {{ snapshot.lastModified }}
           </td>
           <td class="px-1 py-2">
-            <button @click="editSnapshot(snapshot.id)"
+            <button @click="downloadSnapshot(snapshot.id)"
                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Download
             </button>
           </td>
@@ -46,8 +46,6 @@
       </table>
       <h2 v-else>There aren`t any snapshots</h2>
     </div>
-    <div>{{console.log(this)}}</div>
-
   </div>
 </template>
 
@@ -71,8 +69,8 @@ export default {
     axios.get("/snapshots").then((response) => {
       if (response.status === 200) {
         const snapshots = response.data;
-        console.log(document.cookie)
-        snapshots.forEach(snapshot => {
+        snapshots
+            .forEach(snapshot => {
           snapshot.lastModified = this.convertDateTime(snapshot.lastModified)
         });
         this.snapshots = snapshots
@@ -107,7 +105,7 @@ export default {
         }
       })
     },
-    editSnapshot(id) {
+    downloadSnapshot(id) {
       axios.get(`/snapshots/${id}`).then((response => {
         if (response.status === 200) {
           const url = window.URL

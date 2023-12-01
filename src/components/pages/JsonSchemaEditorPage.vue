@@ -50,7 +50,7 @@ export default defineComponent({
         this.schema = schema
         this.validator = createAjvValidator({schema});
       } catch (e) {
-        alert("Invalid json schema uploaded")
+        swal("Invalid json schema uploaded", "", "error")
       }
     },
     convert(data) {

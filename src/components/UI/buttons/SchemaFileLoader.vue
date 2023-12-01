@@ -49,7 +49,7 @@ export default {
         reader.onerror = (err) => alert(err);
         reader.readAsText(this.file);
       } else {
-        alert("File is not JSON type")
+        swal("File is not JSON type", "", "error")
       }
     }
   }

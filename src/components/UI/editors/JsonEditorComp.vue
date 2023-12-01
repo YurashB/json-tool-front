@@ -12,8 +12,8 @@
                 :disabled="buttonDisabled"
             />
             <save-button
-                @save="save"
-                :content="json"
+                v-model:data="json"
+                v-bind:disabled="isSaveButtonDisabled"
             />
           </div>
         </div>
@@ -34,21 +34,23 @@
 import TextComponent from "@/components/UI/textareas/TextComponent.vue";
 import JsonToFlatView from "@/components/UI/buttons/JsonToFlatView.vue";
 import SaveButton from "@/components/UI/buttons/SaveButton.vue";
+import axios from "axios";
 
 export default {
   components: {SaveButton, JsonToFlatView, TextComponent},
   data() {
     return {
-      json: this.jsonProp,
+      json: "",
       convertedData: "",
       isJsonValid: false,
+      isAuth: false,
+      isSaveButtonDisabled: true
     }
   },
   props: {
     buttonDisabled: false,
-    title: '',
     validator: "",
-    jsonProp: ""
+    title: ""
   },
   methods: {
     convertToFlat(flattenJson) {
@@ -56,6 +58,21 @@ export default {
       this.$emit('convert', flattenJson)
     }
   },
+  mounted() {
+    axios.get("/auth/user").then(res => {
+      this.isAuth = res.status === 200;
+    })
+  },
+  watch: {
+    json() {
+      console.log(this.json)
+      try{
+        this.isSaveButtonDisabled = !this.isAuth && false
+      } catch (e) {
+        this.isSaveButtonDisabled = !this.isAuth && true
+      }
+    }
+  }
 }
 </script>
 

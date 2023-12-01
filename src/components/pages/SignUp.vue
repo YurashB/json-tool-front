@@ -90,8 +90,14 @@ export default {
           }
         }
         axios.post(url, data, config)
-            .then(() => router.push("/login"))
-            .catch(() => alert("Ups, something went wrong"));
+            .then((resp) =>{
+              if(resp.response.data.message) {
+                this.emailError = "User with this email already exist";
+              } else {
+                router.push("/snapshots")
+              }
+            })
+            .catch();
       }
     },
 
