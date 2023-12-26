@@ -5,7 +5,6 @@ import SchemaToMarkdownPage from "@/components/pages/SchemaToMarkdownPage.vue";
 import SignUp from "@/components/pages/SignUp.vue";
 import LogIn from "@/components/pages/LogIn.vue";
 import SnapshotsListPage from "@/components/pages/SnapshotsListPage.vue";
-import Test from "@/components/Test.vue";
 
 const routes = [
     {
@@ -34,10 +33,6 @@ const routes = [
         path: '/snapshots',
         component: SnapshotsListPage
     },
-    {
-        path: "/test",
-        component: Test
-    }
 ]
 
 const router = createRouter({

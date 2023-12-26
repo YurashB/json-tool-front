@@ -22,6 +22,7 @@ export default {
   methods: {
     convert() {
       try {
+        console.log("dsdsd")
         const json = JSON.parse(this.json);
 
         const flattenJSON = (obj = {}, res = {}, extraKey = '') => {

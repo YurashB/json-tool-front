@@ -65,7 +65,6 @@ export default {
   },
   watch: {
     json() {
-      console.log(this.json)
       try{
         this.isSaveButtonDisabled = !this.isAuth && false
       } catch (e) {
